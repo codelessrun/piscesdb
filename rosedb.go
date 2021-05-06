@@ -65,8 +65,8 @@ const (
 )
 
 type (
-	// RoseDB the rosedb struct
-	RoseDB struct {
+	// PiscesDB the piscesdb struct
+	PiscesDB struct {
 		activeFile   *storage.DBFile //当前活跃文件
 		activeFileId uint32          //活跃文件id
 		archFiles    ArchivedFiles   //已封存文件
@@ -86,7 +86,7 @@ type (
 )
 
 // Open 打开一个数据库实例
-func Open(config Config) (*RoseDB, error) {
+func Open(config Config) (*PiscesDB, error) {
 
 	//如果目录不存在则创建
 	if !utils.Exist(config.DirPath) {
@@ -113,7 +113,7 @@ func Open(config Config) (*RoseDB, error) {
 	meta := storage.LoadMeta(config.DirPath + dbMetaSaveFile)
 	activeFile.Offset = meta.ActiveWriteOff
 
-	db := &RoseDB{
+	db := &PiscesDB{
 		activeFile:   activeFile,
 		activeFileId: activeFileId,
 		archFiles:    archFiles,
@@ -136,7 +136,7 @@ func Open(config Config) (*RoseDB, error) {
 }
 
 // Reopen 根据配置重新打开数据库
-func Reopen(path string) (*RoseDB, error) {
+func Reopen(path string) (*PiscesDB, error) {
 	if exist := utils.Exist(path + configSaveFile); !exist {
 		return nil, ErrCfgNotExist
 	}
@@ -154,7 +154,7 @@ func Reopen(path string) (*RoseDB, error) {
 }
 
 // Close 关闭数据库，保存相关配置
-func (db *RoseDB) Close() error {
+func (db *PiscesDB) Close() error {
 	db.mu.Lock()
 	defer db.mu.Unlock()
 
@@ -174,7 +174,7 @@ func (db *RoseDB) Close() error {
 }
 
 // Sync 数据持久化
-func (db *RoseDB) Sync() error {
+func (db *PiscesDB) Sync() error {
 	if db == nil || db.activeFile == nil {
 		return nil
 	}
@@ -186,7 +186,7 @@ func (db *RoseDB) Sync() error {
 }
 
 // Reclaim 重新组织磁盘中的数据，回收磁盘空间
-func (db *RoseDB) Reclaim() (err error) {
+func (db *PiscesDB) Reclaim() (err error) {
 	if len(db.archFiles) < db.config.ReclaimThreshold {
 		return ErrReclaimUnreached
 	}
@@ -267,14 +267,14 @@ func (db *RoseDB) Reclaim() (err error) {
 }
 
 // Backup 复制数据库目录，用于备份
-func (db *RoseDB) Backup(dir string) (err error) {
+func (db *PiscesDB) Backup(dir string) (err error) {
 	if utils.Exist(db.config.DirPath) {
 		err = utils.CopyDir(db.config.DirPath, dir)
 	}
 	return
 }
 
-func (db *RoseDB) checkKeyValue(key []byte, value ...[]byte) error {
+func (db *PiscesDB) checkKeyValue(key []byte, value ...[]byte) error {
 	keySize := uint32(len(key))
 	if keySize == 0 {
 		return ErrEmptyKey
@@ -295,7 +295,7 @@ func (db *RoseDB) checkKeyValue(key []byte, value ...[]byte) error {
 }
 
 // saveConfig 关闭数据库之前保存配置
-func (db *RoseDB) saveConfig() (err error) {
+func (db *PiscesDB) saveConfig() (err error) {
 	//保存配置
 	path := db.config.DirPath + configSaveFile
 	file, err := os.OpenFile(path, os.O_CREATE|os.O_WRONLY, 0600)
@@ -307,13 +307,13 @@ func (db *RoseDB) saveConfig() (err error) {
 	return
 }
 
-func (db *RoseDB) saveMeta() error {
+func (db *PiscesDB) saveMeta() error {
 	metaPath := db.config.DirPath + dbMetaSaveFile
 	return db.meta.Store(metaPath)
 }
 
 // buildIndex 建立索引
-func (db *RoseDB) buildIndex(e *storage.Entry, idx *index.Indexer) error {
+func (db *PiscesDB) buildIndex(e *storage.Entry, idx *index.Indexer) error {
 
 	if db.config.IdxMode == KeyValueRamMode {
 		idx.Meta.Value = e.Meta.Value
@@ -337,7 +337,7 @@ func (db *RoseDB) buildIndex(e *storage.Entry, idx *index.Indexer) error {
 }
 
 // store 写数据
-func (db *RoseDB) store(e *storage.Entry) error {
+func (db *PiscesDB) store(e *storage.Entry) error {
 
 	//如果数据文件空间不够，则关闭该文件，并新打开一个文件
 	config := db.config
@@ -378,7 +378,7 @@ func (db *RoseDB) store(e *storage.Entry) error {
 }
 
 // validEntry 判断entry所属的操作标识(增、改类型的操作)，以及val是否是有效的
-func (db *RoseDB) validEntry(e *storage.Entry) bool {
+func (db *PiscesDB) validEntry(e *storage.Entry) bool {
 	if e == nil {
 		return false
 	}

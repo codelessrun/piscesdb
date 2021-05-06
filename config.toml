@@ -2,7 +2,7 @@
 addr = "127.0.0.1:5200"
 
 # 数据库文件路径
-dir_path = "/tmp/rosedb_server"
+dir_path = "/tmp/piscesdb_server"
 
 # 默认数据文件大小16MB
 block_size = 16777216

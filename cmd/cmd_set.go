@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func sAdd(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sAdd(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) <= 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -22,7 +22,7 @@ func sAdd(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sPop(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sPop(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -44,7 +44,7 @@ func sPop(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sIsMember(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sIsMember(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -57,7 +57,7 @@ func sIsMember(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sRandMember(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sRandMember(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -77,7 +77,7 @@ func sRandMember(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sRem(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sRem(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) <= 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -93,7 +93,7 @@ func sRem(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sMove(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sMove(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -104,7 +104,7 @@ func sMove(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sCard(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sCard(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -114,7 +114,7 @@ func sCard(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sMembers(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sMembers(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -129,7 +129,7 @@ func sMembers(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sUnion(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sUnion(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) <= 0 {
 		err = ErrSyntaxIncorrect
 		return
@@ -148,7 +148,7 @@ func sUnion(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func sDiff(db *rosedb.RoseDB, args []string) (res string, err error) {
+func sDiff(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) <= 0 {
 		err = ErrSyntaxIncorrect
 		return

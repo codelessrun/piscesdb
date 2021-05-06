@@ -61,7 +61,7 @@ const (
 )
 
 // buildStringIndex 建立字符串索引
-func (db *RoseDB) buildStringIndex(idx *index.Indexer, opt uint16) {
+func (db *PiscesDB) buildStringIndex(idx *index.Indexer, opt uint16) {
 	if db.listIndex == nil || idx == nil {
 		return
 	}
@@ -79,7 +79,7 @@ func (db *RoseDB) buildStringIndex(idx *index.Indexer, opt uint16) {
 }
 
 // buildListIndex 建立列表索引
-func (db *RoseDB) buildListIndex(idx *index.Indexer, opt uint16) {
+func (db *PiscesDB) buildListIndex(idx *index.Indexer, opt uint16) {
 	if db.listIndex == nil || idx == nil {
 		return
 	}
@@ -124,7 +124,7 @@ func (db *RoseDB) buildListIndex(idx *index.Indexer, opt uint16) {
 }
 
 // buildHashIndex 建立哈希索引
-func (db *RoseDB) buildHashIndex(idx *index.Indexer, opt uint16) {
+func (db *PiscesDB) buildHashIndex(idx *index.Indexer, opt uint16) {
 
 	if db.hashIndex == nil || idx == nil {
 		return
@@ -140,7 +140,7 @@ func (db *RoseDB) buildHashIndex(idx *index.Indexer, opt uint16) {
 }
 
 // buildSetIndex 建立集合索引
-func (db *RoseDB) buildSetIndex(idx *index.Indexer, opt uint16) {
+func (db *PiscesDB) buildSetIndex(idx *index.Indexer, opt uint16) {
 
 	if db.hashIndex == nil || idx == nil {
 		return
@@ -159,7 +159,7 @@ func (db *RoseDB) buildSetIndex(idx *index.Indexer, opt uint16) {
 }
 
 // buildZsetIndex 建立有序集合索引
-func (db *RoseDB) buildZsetIndex(idx *index.Indexer, opt uint16) {
+func (db *PiscesDB) buildZsetIndex(idx *index.Indexer, opt uint16) {
 
 	if db.hashIndex == nil || idx == nil {
 		return
@@ -177,7 +177,7 @@ func (db *RoseDB) buildZsetIndex(idx *index.Indexer, opt uint16) {
 }
 
 // loadIdxFromFiles 从文件中加载String、List、Hash、Set、ZSet索引
-func (db *RoseDB) loadIdxFromFiles() error {
+func (db *PiscesDB) loadIdxFromFiles() error {
 	if db.archFiles == nil && db.activeFile == nil {
 		return nil
 	}

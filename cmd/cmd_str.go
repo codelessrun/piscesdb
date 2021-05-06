@@ -9,7 +9,7 @@ import (
 // ErrSyntaxIncorrect incorrect err
 var ErrSyntaxIncorrect = errors.New("syntax err")
 
-func set(db *rosedb.RoseDB, args []string) (res string, err error) {
+func set(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -22,7 +22,7 @@ func set(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func get(db *rosedb.RoseDB, args []string) (res string, err error) {
+func get(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -35,7 +35,7 @@ func get(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func setNx(db *rosedb.RoseDB, args []string) (res string, err error) {
+func setNx(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -48,7 +48,7 @@ func setNx(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func getSet(db *rosedb.RoseDB, args []string) (res string, err error) {
+func getSet(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -61,7 +61,7 @@ func getSet(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func appendStr(db *rosedb.RoseDB, args []string) (res string, err error) {
+func appendStr(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -73,7 +73,7 @@ func appendStr(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func strLen(db *rosedb.RoseDB, args []string) (res string, err error) {
+func strLen(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -83,7 +83,7 @@ func strLen(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func strExists(db *rosedb.RoseDB, args []string) (res string, err error) {
+func strExists(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -96,7 +96,7 @@ func strExists(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func strRem(db *rosedb.RoseDB, args []string) (res string, err error) {
+func strRem(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -107,7 +107,7 @@ func strRem(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func prefixScan(db *rosedb.RoseDB, args []string) (res string, err error) {
+func prefixScan(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -135,7 +135,7 @@ func prefixScan(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func rangeScan(db *rosedb.RoseDB, args []string) (res string, err error) {
+func rangeScan(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -153,7 +153,7 @@ func rangeScan(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func expire(db *rosedb.RoseDB, args []string) (res string, err error) {
+func expire(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -169,7 +169,7 @@ func expire(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func persist(db *rosedb.RoseDB, args []string) (res string, err error) {
+func persist(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -179,7 +179,7 @@ func persist(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func ttl(db *rosedb.RoseDB, args []string) (res string, err error) {
+func ttl(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 	}

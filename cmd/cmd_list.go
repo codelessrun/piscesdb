@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func lPush(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lPush(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) < 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -24,7 +24,7 @@ func lPush(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func rPush(db *rosedb.RoseDB, args []string) (res string, err error) {
+func rPush(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) < 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -42,7 +42,7 @@ func rPush(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lPop(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lPop(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -55,7 +55,7 @@ func lPop(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func rPop(db *rosedb.RoseDB, args []string) (res string, err error) {
+func rPop(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -68,7 +68,7 @@ func rPop(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lIndex(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lIndex(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 0 {
 		err = ErrSyntaxIncorrect
 		return
@@ -84,7 +84,7 @@ func lIndex(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lRem(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lRem(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -102,7 +102,7 @@ func lRem(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lInsert(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lInsert(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 4 {
 		err = ErrSyntaxIncorrect
 		return
@@ -121,7 +121,7 @@ func lInsert(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lSet(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lSet(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -142,7 +142,7 @@ func lSet(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lTrim(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lTrim(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -164,7 +164,7 @@ func lTrim(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lRange(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lRange(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -192,7 +192,7 @@ func lRange(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func lLen(db *rosedb.RoseDB, args []string) (res string, err error) {
+func lLen(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return

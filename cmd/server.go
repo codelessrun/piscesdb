@@ -19,7 +19,7 @@ var reg, _ = regexp.Compile(`'.*?'|".*?"|\S+`)
 const connInterval = 8
 
 // ExecCmdFunc func for cmd execute
-type ExecCmdFunc func(*rosedb.RoseDB, []string) (string, error)
+type ExecCmdFunc func(*rosedb.PiscesDB, []string) (string, error)
 
 // ExecCmd exec cmd map
 var ExecCmd = make(map[string]ExecCmdFunc)
@@ -30,7 +30,7 @@ func addExecCommand(cmd string, cmdFunc ExecCmdFunc) {
 
 // Server rosedb server
 type Server struct {
-	db       *rosedb.RoseDB
+	db       *rosedb.PiscesDB
 	closed   bool
 	mu       sync.Mutex
 	done     chan struct{}
@@ -55,7 +55,7 @@ func (s *Server) Listen(addr string) {
 		return
 	}
 
-	log.Println("rosedb is running, ready to accept connections.")
+	log.Println("piscesdb is running, ready to accept connections.")
 	for {
 		select {
 		case <-s.done:

@@ -10,7 +10,7 @@ import (
 
 var dbPath = "/Users/roseduan/resources/rosedb/db0"
 
-func InitDb() *RoseDB {
+func InitDb() *PiscesDB {
 	config := DefaultConfig()
 	config.DirPath = dbPath
 	config.IdxMode = KeyOnlyRamMode
@@ -25,7 +25,7 @@ func InitDb() *RoseDB {
 	return db
 }
 
-func ReopenDb() *RoseDB {
+func ReopenDb() *PiscesDB {
 	db, err := Reopen(dbPath)
 	if err != nil {
 		log.Fatal(err)

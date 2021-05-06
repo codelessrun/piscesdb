@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func hSet(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hSet(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -17,7 +17,7 @@ func hSet(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hSetNx(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hSetNx(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -33,7 +33,7 @@ func hSetNx(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hGet(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hGet(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -47,7 +47,7 @@ func hGet(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hGetAll(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hGetAll(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -62,7 +62,7 @@ func hGetAll(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hDel(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hDel(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) <= 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -79,7 +79,7 @@ func hDel(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hExists(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hExists(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -92,7 +92,7 @@ func hExists(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hLen(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hLen(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -102,7 +102,7 @@ func hLen(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hKeys(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hKeys(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -117,7 +117,7 @@ func hKeys(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func hValues(db *rosedb.RoseDB, args []string) (res string, err error) {
+func hValues(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return

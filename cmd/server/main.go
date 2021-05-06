@@ -52,14 +52,14 @@ func main() {
 
 	server, err := cmd.NewServer(cfg)
 	if err != nil {
-		log.Printf("create rosedb server err: %+v\n", err)
+		log.Printf("create piscesdb server err: %+v\n", err)
 		return
 	}
 	go server.Listen(cfg.Addr)
 
 	<-sig
 	server.Stop()
-	log.Println("rosedb is ready to exit, bye...")
+	log.Println("piscesdb is ready to exit, bye...")
 }
 
 func newConfigFromFile(config string) (*rosedb.Config, error) {

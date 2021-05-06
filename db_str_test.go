@@ -299,7 +299,7 @@ func TestDoSet(t *testing.T) {
 	fmt.Println("val = ", string(val))
 }
 
-func writeLargeData(db *RoseDB, t *testing.T) {
+func writeLargeData(db *PiscesDB, t *testing.T) {
 	keyPrefix := "test_key_"
 	valPrefix := "test_value_"
 	rand.Seed(time.Now().Unix())

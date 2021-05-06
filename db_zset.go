@@ -18,7 +18,7 @@ func newZsetIdx() *ZsetIdx {
 }
 
 // ZAdd 将 member 元素及其 score 值加入到有序集 key 当中
-func (db *RoseDB) ZAdd(key []byte, score float64, member []byte) error {
+func (db *PiscesDB) ZAdd(key []byte, score float64, member []byte) error {
 	if err := db.checkKeyValue(key, member); err != nil {
 		return err
 	}
@@ -37,7 +37,7 @@ func (db *RoseDB) ZAdd(key []byte, score float64, member []byte) error {
 }
 
 // ZScore 返回集合key中对应member的score值，如果不存在则返回负无穷
-func (db *RoseDB) ZScore(key, member []byte) float64 {
+func (db *PiscesDB) ZScore(key, member []byte) float64 {
 	db.zsetIndex.mu.RLock()
 	defer db.zsetIndex.mu.RUnlock()
 
@@ -45,7 +45,7 @@ func (db *RoseDB) ZScore(key, member []byte) float64 {
 }
 
 // ZCard 返回指定集合key中的元素个数
-func (db *RoseDB) ZCard(key []byte) int {
+func (db *PiscesDB) ZCard(key []byte) int {
 	db.zsetIndex.mu.RLock()
 	defer db.zsetIndex.mu.RUnlock()
 
@@ -54,7 +54,7 @@ func (db *RoseDB) ZCard(key []byte) int {
 
 // ZRank 返回有序集 key 中成员 member 的排名。其中有序集成员按 score 值递增(从小到大)顺序排列
 //排名以 0 为底，也就是说， score 值最小的成员排名为 0
-func (db *RoseDB) ZRank(key, member []byte) int64 {
+func (db *PiscesDB) ZRank(key, member []byte) int64 {
 	if err := db.checkKeyValue(key, member); err != nil {
 		return -1
 	}
@@ -67,7 +67,7 @@ func (db *RoseDB) ZRank(key, member []byte) int64 {
 
 // ZRevRank 返回有序集 key 中成员 member 的排名。其中有序集成员按 score 值递减(从大到小)排序
 //排名以 0 为底，也就是说， score 值最大的成员排名为 0
-func (db *RoseDB) ZRevRank(key, member []byte) int64 {
+func (db *PiscesDB) ZRevRank(key, member []byte) int64 {
 	if err := db.checkKeyValue(key, member); err != nil {
 		return -1
 	}
@@ -80,7 +80,7 @@ func (db *RoseDB) ZRevRank(key, member []byte) int64 {
 
 // ZIncrBy 为有序集 key 的成员 member 的 score 值加上增量 increment
 //当 key 不存在，或 member 不是 key 的成员时，ZIncrBy 等同于 ZAdd
-func (db *RoseDB) ZIncrBy(key []byte, increment float64, member []byte) (float64, error) {
+func (db *PiscesDB) ZIncrBy(key []byte, increment float64, member []byte) (float64, error) {
 	if err := db.checkKeyValue(key, member); err != nil {
 		return increment, err
 	}
@@ -101,7 +101,7 @@ func (db *RoseDB) ZIncrBy(key []byte, increment float64, member []byte) (float64
 
 // ZRange 返回有序集 key 中，指定区间内的成员，其中成员的位置按 score 值递增(从小到大)来排序
 //具有相同 score 值的成员按字典序(lexicographical order )来排列
-func (db *RoseDB) ZRange(key []byte, start, stop int) []interface{} {
+func (db *PiscesDB) ZRange(key []byte, start, stop int) []interface{} {
 	if err := db.checkKeyValue(key, nil); err != nil {
 		return nil
 	}
@@ -114,7 +114,7 @@ func (db *RoseDB) ZRange(key []byte, start, stop int) []interface{} {
 
 // ZRevRange 返回有序集 key 中，指定区间内的成员，其中成员的位置按 score 值递减(从大到小)来排列
 //具有相同 score 值的成员按字典序的逆序(reverse lexicographical order)排列
-func (db *RoseDB) ZRevRange(key []byte, start, stop int) []interface{} {
+func (db *PiscesDB) ZRevRange(key []byte, start, stop int) []interface{} {
 	if err := db.checkKeyValue(key, nil); err != nil {
 		return nil
 	}
@@ -126,7 +126,7 @@ func (db *RoseDB) ZRevRange(key []byte, start, stop int) []interface{} {
 }
 
 // ZRem 移除有序集 key 中的 member 成员，不存在则将被忽略
-func (db *RoseDB) ZRem(key, member []byte) (ok bool, err error) {
+func (db *PiscesDB) ZRem(key, member []byte) (ok bool, err error) {
 	if err = db.checkKeyValue(key, member); err != nil {
 		return
 	}
@@ -145,7 +145,7 @@ func (db *RoseDB) ZRem(key, member []byte) (ok bool, err error) {
 }
 
 // ZGetByRank 根据排名获取member及分值信息，从小到大排列遍历，即分值最低排名为0，依次类推
-func (db *RoseDB) ZGetByRank(key []byte, rank int) []interface{} {
+func (db *PiscesDB) ZGetByRank(key []byte, rank int) []interface{} {
 	db.zsetIndex.mu.RLock()
 	defer db.zsetIndex.mu.RUnlock()
 
@@ -153,7 +153,7 @@ func (db *RoseDB) ZGetByRank(key []byte, rank int) []interface{} {
 }
 
 // ZRevGetByRank 根据排名获取member及分值信息，从大到小排列遍历，即分值最高排名为0，依次类推
-func (db *RoseDB) ZRevGetByRank(key []byte, rank int) []interface{} {
+func (db *PiscesDB) ZRevGetByRank(key []byte, rank int) []interface{} {
 	db.zsetIndex.mu.RLock()
 	defer db.zsetIndex.mu.RUnlock()
 
@@ -162,7 +162,7 @@ func (db *RoseDB) ZRevGetByRank(key []byte, rank int) []interface{} {
 
 // ZScoreRange 返回有序集 key 中，所有 score 值介于 min 和 max 之间(包括等于 min 或 max )的成员
 //有序集成员按 score 值递增(从小到大)次序排列
-func (db *RoseDB) ZScoreRange(key []byte, min, max float64) []interface{} {
+func (db *PiscesDB) ZScoreRange(key []byte, min, max float64) []interface{} {
 	if err := db.checkKeyValue(key, nil); err != nil {
 		return nil
 	}
@@ -175,7 +175,7 @@ func (db *RoseDB) ZScoreRange(key []byte, min, max float64) []interface{} {
 
 // ZRevScoreRange 返回有序集 key 中， score 值介于 max 和 min 之间(包括等于 max 或 min )的所有的成员
 //有序集成员按 score 值递减(从大到小)的次序排列
-func (db *RoseDB) ZRevScoreRange(key []byte, max, min float64) []interface{} {
+func (db *PiscesDB) ZRevScoreRange(key []byte, max, min float64) []interface{} {
 	if err := db.checkKeyValue(key, nil); err != nil {
 		return nil
 	}

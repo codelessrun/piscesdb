@@ -7,7 +7,7 @@ import (
 	"strconv"
 )
 
-func zAdd(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zAdd(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -23,7 +23,7 @@ func zAdd(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zScore(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zScore(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -33,7 +33,7 @@ func zScore(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zCard(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zCard(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 1 {
 		err = ErrSyntaxIncorrect
 		return
@@ -43,7 +43,7 @@ func zCard(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zRank(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zRank(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -53,7 +53,7 @@ func zRank(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zRevRank(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zRevRank(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -63,7 +63,7 @@ func zRevRank(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zIncrBy(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zIncrBy(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -80,16 +80,16 @@ func zIncrBy(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zRange(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zRange(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	return zRawRange(db, args, false)
 }
 
-func zRevRange(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zRevRange(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	return zRawRange(db, args, true)
 }
 
 // for zRange and zRevRange
-func zRawRange(db *rosedb.RoseDB, args []string, rev bool) (res string, err error) {
+func zRawRange(db *rosedb.PiscesDB, args []string, rev bool) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
@@ -121,7 +121,7 @@ func zRawRange(db *rosedb.RoseDB, args []string, rev bool) (res string, err erro
 	return
 }
 
-func zRem(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zRem(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -137,16 +137,16 @@ func zRem(db *rosedb.RoseDB, args []string) (res string, err error) {
 	return
 }
 
-func zGetByRank(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zGetByRank(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	return zRawGetByRank(db, args, false)
 }
 
-func zRevGetByRank(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zRevGetByRank(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	return zRawGetByRank(db, args, true)
 }
 
 // for zGetByRank and zRevGetByRank
-func zRawGetByRank(db *rosedb.RoseDB, args []string, rev bool) (res string, err error) {
+func zRawGetByRank(db *rosedb.PiscesDB, args []string, rev bool) (res string, err error) {
 	if len(args) != 2 {
 		err = ErrSyntaxIncorrect
 		return
@@ -172,16 +172,16 @@ func zRawGetByRank(db *rosedb.RoseDB, args []string, rev bool) (res string, err 
 	return
 }
 
-func zScoreRange(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zScoreRange(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	return zRawScoreRange(db, args, false)
 }
 
-func zSRevScoreRange(db *rosedb.RoseDB, args []string) (res string, err error) {
+func zSRevScoreRange(db *rosedb.PiscesDB, args []string) (res string, err error) {
 	return zRawScoreRange(db, args, true)
 }
 
 // for zScoreRange and zSRevScoreRange
-func zRawScoreRange(db *rosedb.RoseDB, args []string, rev bool) (res string, err error) {
+func zRawScoreRange(db *rosedb.PiscesDB, args []string, rev bool) (res string, err error) {
 	if len(args) != 3 {
 		err = ErrSyntaxIncorrect
 		return
